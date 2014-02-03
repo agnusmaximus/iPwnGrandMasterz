@@ -9,6 +9,6 @@ setoption name Threads value 4
 
 position startpos moves $@
 
-go movetime 5000
+go movetime 2000
 
 EOF

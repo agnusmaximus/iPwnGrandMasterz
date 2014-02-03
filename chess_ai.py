@@ -74,9 +74,9 @@ def get_move(fen=""):
 
 def get_move2(move_list=""):
     result = commands.getstatusoutput('sh use_stockfish2.sh ' + move_list)
-    print(result)
+    #print(result)
     bests = [x[:4] for x in re.findall("bestmove (.*)", result[1])]
-    print(bests)
+    #print(bests)
     return bests[0]
 
 def get_move_pts(mv):
@@ -110,13 +110,14 @@ def get_move_pts(mv):
 def make_move_test(pt):
     # First click to get into the chess window
     click.mouse_click(pt[0][0], pt[0][1])
+    sleep(.5)
     click.mouse_click(pt[0][0], pt[0][1])
     click.mouse_click(pt[1][0], pt[1][1])
 
 def make_move(pt):
     click.mouse_click(pt[0][0], pt[0][1])
+    sleep(.5)
     click.mouse_click(pt[0][0], pt[0][1])
-    sleep(.3)
     click.mouse_click(pt[1][0], pt[1][1])
     click.mouse_click(1000, 500)
     
