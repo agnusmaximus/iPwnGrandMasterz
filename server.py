@@ -11,7 +11,6 @@ import chess_ai
 import time
 from random import randint
 import commands
-import re
 
 def startup():
     player = sys.stdin.readline().strip()
@@ -22,14 +21,9 @@ def startup():
         print("PLAYING AS WHITE")
         chess_ai.TURN = chess_ai.WHITE
 
-    if chess_ai.TURN == chess_ai.WHITE:
-        mv = chess_ai.get_move2("")
-        pt = chess_ai.get_move_pts(mv)
-        chess_ai.make_move(pt)
-
 @route("/", method="GET")
 def receive_chess_moves():
-    moves = json.loads(request.query['moves'])    
+    moves = json.loads(request.query['moves'])
     moves = [x for x in moves if x != u'']
     move_list = ""
     count, index = 0, 0
@@ -67,7 +61,8 @@ def receive_chess_moves():
     #print("Filtered List: " + lan_move_list)
     mv = chess_ai.get_move2(lan_move_list)
     pt = chess_ai.get_move_pts(mv)
+    time.sleep(randint(1, 10) / float(randint(5, 10)))
     chess_ai.make_move(pt)
 
 startup()
-run(host='localhost', port=8080)
+run(host='localhost', port=8080, quiet=True)

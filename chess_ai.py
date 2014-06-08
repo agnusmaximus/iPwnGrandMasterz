@@ -84,10 +84,10 @@ def get_move_pts(mv):
     w1, h1 = ord(start[0])-ord('a'), 8-int(start[1])
     w2, h2 = ord(end[0])-ord('a'), 8-int(end[1])
 
-    pt1 = (w1 * 33.375 + chess_screen_capture.left_x + 33.375/2,
-           h1 * 33.375 + chess_screen_capture.left_y + 33.375/2)
-    pt2 = (w2 * 33.375 + chess_screen_capture.left_x + 33.375/2, 
-           h2 * 33.375 + chess_screen_capture.left_y + 33.375/2)
+    pt1 = (w1 * 60 + chess_screen_capture.left_x + 60/2,
+           h1 * 60 + chess_screen_capture.left_y + 60/2)
+    pt2 = (w2 * 60 + chess_screen_capture.left_x + 60/2, 
+           h2 * 60 + chess_screen_capture.left_y + 60/2)
 
     global W_Q_CASTLE, W_K_CASTLE, B_K_CASTLE, B_Q_CASTLE
     if w1 == 4 and h1 == 7:
@@ -110,13 +110,14 @@ def get_move_pts(mv):
 def make_move_test(pt):
     # First click to get into the chess window
     click.mouse_click(pt[0][0], pt[0][1])
-    sleep(.5)
+    sleep(.1)
     click.mouse_click(pt[0][0], pt[0][1])
     click.mouse_click(pt[1][0], pt[1][1])
 
 def make_move(pt):
+    click.mouse_click(1000, 500)
     click.mouse_click(pt[0][0], pt[0][1])
-    sleep(.5)
+    sleep(.2)
     click.mouse_click(pt[0][0], pt[0][1])
     click.mouse_click(pt[1][0], pt[1][1])
     click.mouse_click(1000, 500)
