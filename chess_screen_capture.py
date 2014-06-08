@@ -16,8 +16,8 @@ pieces_dir = "piece_images/"
 
 # 209 261
 
-piece_dim = 60
-left_x, left_y = 106, 271
+piece_dim = 45
+left_x, left_y = 128, 252
 right_x, right_y = left_x + piece_dim * 8, left_y + piece_dim * 8
 w, h = right_x-left_x, left_y-right_y
 

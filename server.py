@@ -12,7 +12,10 @@ import time
 from random import randint
 import commands
 
+player = ""
+
 def startup():
+    global player
     player = sys.stdin.readline().strip()
     if player == "BLACK":
         print("PLAYING AS BLACK")
@@ -61,7 +64,14 @@ def receive_chess_moves():
     #print("Filtered List: " + lan_move_list)
     mv = chess_ai.get_move2(lan_move_list)
     pt = chess_ai.get_move_pts(mv)
-    time.sleep(randint(1, 10) / float(randint(5, 10)))
+    print(mv)
+    if player == "BLACK":
+        x1 = chess_screen_capture.right_x - (pt[0][0] - chess_screen_capture.left_x)
+        y1 = chess_screen_capture.right_y - (pt[0][1] - chess_screen_capture.left_y)
+        x2 = chess_screen_capture.right_x - (pt[1][0] - chess_screen_capture.left_x)
+        y2 = chess_screen_capture.right_y - (pt[1][1] - chess_screen_capture.left_y)
+        new_pt = ((x1, y1), (x2, y2))
+        pt = new_pt
     chess_ai.make_move(pt)
 
 startup()

@@ -7,7 +7,7 @@ from scipy.misc import imread
 from scipy.signal.signaltools import correlate2d as c2d
 import numpy
 import image_similarity
-import ssim
+#import ssim
 import math
 import operator
 
